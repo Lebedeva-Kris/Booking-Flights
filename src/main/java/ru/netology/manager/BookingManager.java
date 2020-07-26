@@ -6,7 +6,7 @@ import ru.netology.repository.BookingRepository;
 import java.util.Arrays;
 
 public class BookingManager {
-    private BookingRepository repository;
+    BookingRepository repository;
 
     public BookingManager() {
     }
