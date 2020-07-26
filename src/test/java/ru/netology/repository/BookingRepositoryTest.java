@@ -77,6 +77,20 @@ class BookingRepositoryTest {
 //    }
 
     @Test
+    void shouldRemoveByIdIfNotExist() {
+        int idToRemove = 5;
+
+        repository.removeById(idToRemove);
+
+        Booking[] expected = {first, second, third, fourth};
+        Booking[] actual = repository.findAll();
+
+        assertArrayEquals(expected, actual);
+    }
+>>>>>>>49f71ef2d5efb25d17a304aa26117c8dc0f51fcd
+
+    @Test
+
     void shouldRemoveAllFlights() {
         repository.removeAll();
 
