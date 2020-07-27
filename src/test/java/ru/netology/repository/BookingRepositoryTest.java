@@ -3,6 +3,7 @@ package ru.netology.repository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.domain.Booking;
+import ru.netology.exception.NotFoundException;
 import ru.netology.manager.BookingManager;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -63,18 +64,10 @@ class BookingRepositoryTest {
         assertArrayEquals(expected, actual);
     }
 
-//    Тест проходит, но из-за него сборка падает - это исключение.
-//    @Test
-//    void shouldRemoveByIdIfNotExist() {
-//        int idToRemove = 5;
-//
-//        repository.removeById(idToRemove);
-//
-//        Booking[] expected = {first, second, third, fourth};
-//        Booking[] actual = repository.findAll();
-//
-//        assertArrayEquals(expected, actual);
-//    }
+    @Test
+    public void shouldRemoveByIdIfNotExist() {
+        assertThrows(NotFoundException.class, () -> repository.removeById(5));
+    }
 
 
     @Test
