@@ -6,7 +6,7 @@ import ru.netology.exception.NotFoundException;
 public class BookingRepository {
     private Booking[] flights = new Booking[0];
 
-    public Booking[] findAll(){
+    public Booking[] findAll() {
         return flights;
     }
 
