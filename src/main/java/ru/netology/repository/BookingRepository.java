@@ -30,7 +30,7 @@ public class BookingRepository {
 
     public void removeById(int id) {
         if (findById(id) == null) {
-            throw new NotFoundException("Element with id: " + id + " not found");
+            throw new NotFoundException("Flight with id: " + id + " not found");
         }
         int length = flights.length - 1;
         Booking[] tmp = new Booking[length];
