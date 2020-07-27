@@ -7,6 +7,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ru.netology.domain.Booking;
+import ru.netology.domain.BookingComparator;
 import ru.netology.repository.BookingRepository;
 
 import java.util.Arrays;
@@ -67,6 +68,19 @@ class BookingManagerTest {
 
         assertArrayEquals(expected, actual);
 
+    }
+
+    @Test
+    void shouldFindFlightsIfSortingByTravelTime() {
+        Booking[] returned = {first, second, third, fourth};
+        doReturn(returned).when(repository).findAll();
+
+        BookingComparator comparator = new BookingComparator();
+
+        Booking[] actual = manager.findAll("DME", "DPS", comparator);
+        Booking[] expected = {second, first, third};
+
+        assertArrayEquals(expected, actual);
     }
 
 
