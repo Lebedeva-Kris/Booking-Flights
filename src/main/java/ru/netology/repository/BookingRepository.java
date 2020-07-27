@@ -1,11 +1,12 @@
 package ru.netology.repository;
 
 import ru.netology.domain.Booking;
+import ru.netology.exception.NotFoundException;
 
 public class BookingRepository {
     private Booking[] flights = new Booking[0];
 
-    public Booking[] findAll(){
+    public Booking[] findAll() {
         return flights;
     }
 
@@ -28,6 +29,9 @@ public class BookingRepository {
     }
 
     public void removeById(int id) {
+        if (findById(id) == null) {
+            throw new NotFoundException("Element with id: " + id + " not found");
+        }
         int length = flights.length - 1;
         Booking[] tmp = new Booking[length];
         int index = 0;
